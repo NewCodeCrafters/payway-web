@@ -4,7 +4,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
-import { FormsModule } from '@angular/forms';
+import {
+  FormsModule,
+  FormGroup,
+  ReactiveFormsModule,
+  FormControl,
+  Validators,
+} from '@angular/forms';
+
 @Component({
   standalone: true,
   selector: 'sign-up',
@@ -16,6 +23,21 @@ import { FormsModule } from '@angular/forms';
     MatButtonModule,
     MatDividerModule,
     MatIconModule,
+    ReactiveFormsModule,
   ],
 })
-export class SignUp {}
+export class SignUp {
+  applyForm = new FormGroup({
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    email: new FormControl('', {
+      validators: Validators.email,
+    }),
+    password: new FormControl('', {
+      validators: [Validators.required],
+    }),
+  });
+  handleSubmit() {
+    console.log(this.applyForm.value, this.applyForm.valid);
+  }
+}
