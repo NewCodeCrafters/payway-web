@@ -9,20 +9,20 @@
       (submit)="handleSubmit()"
     >
       <mat-form-field>
-        <mat-label>First Name</mat-label>
-        <input matInput formControlName="firstName" />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Last Name</mat-label>
-        <input matInput formControlName="lastName" />
-      </mat-form-field>
-      <mat-form-field>
         <mat-label>Email</mat-label>
         <input matInput type="email" formControlName="email" />
       </mat-form-field>
       <mat-form-field>
+        <mat-label>Phone Number</mat-label>
+        <input matInput formControlName="phone_number" />
+      </mat-form-field>
+      <mat-form-field>
         <mat-label>Password</mat-label>
         <input matInput type="password" formControlName="password" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Confirm Password</mat-label>
+        <input matInput type="password" formControlName="re_password" />
       </mat-form-field>
       <div class="col-span-2 flex justify-center items-center">
         <button

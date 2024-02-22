@@ -10,6 +10,7 @@ import {
   ReactiveFormsModule,
   FormControl,
   Validators,
+  ValidationErrors,
 } from '@angular/forms';
 
 @Component({
@@ -27,17 +28,32 @@ import {
   ],
 })
 export class SignUp {
-  applyForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
+  applyForm = new FormGroup<{
+    phone_number: FormControl<number | null>;
+    re_password: FormControl<string | null>;
+    email: FormControl<string | null>;
+    password: FormControl<string | null>;
+  }>({
+    phone_number: new FormControl<number | null>(null, {
+      validators: [Validators.required, Validators.pattern(/\d/gi)],
+    }),
+    re_password: new FormControl('', {
+      validators: [Validators.required],
+    }),
     email: new FormControl('', {
-      validators: Validators.email,
+      validators: [Validators.email, Validators.required],
     }),
     password: new FormControl('', {
       validators: [Validators.required],
     }),
   });
-  handleSubmit() {
-    console.log(this.applyForm.value, this.applyForm.valid);
+  async handleSubmit() {
+    // if (!this.applyForm.status) return;
+    if (this.applyForm.value.re_password !== this.applyForm.value.password) {
+      console.log(this.applyForm.value, this.applyForm.errors);
+      this.applyForm.setErrors((errors: ValidationErrors) => {
+        console.log(errors);
+      });
+    }
   }
 }
