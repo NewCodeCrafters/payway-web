@@ -29,12 +29,12 @@ class Auth extends Payway {
   constructor(private httpClient: HttpClient) {
     super();
   }
-  async create_user(user_details: CreateUser) {
-    const res = await JsonReq.req<CreateUser>(
-      `${this.url}/${this.path}`,
-      'post',
-      user_details
-    );
+  create_user(user_details: CreateUser) {
+    const res = this.httpClient.post(`${this.url}/${this.path}`, user_details, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
     return res;
   }
 }

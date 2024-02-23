@@ -10,13 +10,8 @@ import {
   AbstractControl,
 } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
-type SignupUser = {
-  phone_number: FormControl<number | null>;
-  re_password: FormControl<string | null>;
-  email: FormControl<string | null>;
-  password: FormControl<string | null>;
-  country: FormControl<string | null>;
-};
+import { SignupUser } from './signup.types';
+
 @Component({
   standalone: true,
   selector: 'sign-up',
@@ -31,7 +26,11 @@ export class SignUp implements OnInit {
   applyForm = new FormGroup<SignupUser>(
     {
       phone_number: new FormControl<number | null>(null, {
-        validators: [Validators.required, Validators.pattern(/\d/gi)],
+        validators: [
+          Validators.required,
+          Validators.pattern(/\d/gi),
+          Validators.minLength(10),
+        ],
       }),
       re_password: new FormControl('', {
         validators: [Validators.required],
