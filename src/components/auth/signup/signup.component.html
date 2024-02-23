@@ -13,13 +13,12 @@
       class="grid md:grid-cols-2 gap-4 md:gap-10"
       (submit)="handleSubmit()"
     >
-      <mat-form-field>
-        <mat-label>Email</mat-label>
+      <fieldset>
+        <label>Email</label>
         <input matInput type="email" formControlName="email" />
-        <mat-error />
-      </mat-form-field>
+      </fieldset>
       <div class="phone-grid">
-        <mat-form-field>
+        <fieldset>
           <select matNativeControl formControlName="country" class="w-28">
             <option
               *ngFor="let country of countries"
@@ -28,24 +27,26 @@
               {{ country.dial_code }}
             </option>
           </select>
-        </mat-form-field>
-        <mat-form-field class="flex-1">
-          <mat-label>Phone Number</mat-label>
+        </fieldset>
+        <fieldset class="flex-1">
+          <label>Phone Number</label>
           <input matInput formControlName="phone_number" />
-        </mat-form-field>
+        </fieldset>
       </div>
-      <mat-form-field>
-        <mat-label>Password</mat-label>
+      <fieldset>
+        <label>Password</label>
         <input matInput type="password" formControlName="password" />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Confirm Password</mat-label>
+      </fieldset>
+      <fieldset>
+        <label>Confirm Password</label>
         <input matInput type="password" formControlName="re_password" />
-        <mat-error
-          *ngIf="(applyForm.get('re_password')?.errors)!['passwordMismatch']"
-          >Password must match</mat-error
+        <p
+          *ngIf="!!this.applyForm?.errors?.['passwordMismatch'] && (this.applyForm.get('re_password')?.touched)"
+          class="text-red-500"
         >
-      </mat-form-field>
+          Password must match
+        </p>
+      </fieldset>
       <div class="col-span-2 flex justify-center items-center">
         <button
           mat-raised-button
