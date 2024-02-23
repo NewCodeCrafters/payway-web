@@ -1,11 +1,8 @@
 type CreateUser = {
   email: string;
-  phone_number: number;
+  phone_number: string;
   password: string;
   re_password: string;
 };
 
-
-export type {
-  CreateUser
-}
+export type { CreateUser };

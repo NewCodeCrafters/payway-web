@@ -5,8 +5,8 @@
   }
 </style>
 
-<main class="min-h-screen grid place-items-center bg-slate-900">
-  <div class="max-w-5xl w-9/12">
+<main class="min-h-screen flex bg-slate-900">
+  <section class="max-w-5xl w-9/12 basis-3/5">
     <h1 class="text-white">Create account</h1>
     <form
       [formGroup]="applyForm"
@@ -14,32 +14,70 @@
       (submit)="handleSubmit()"
     >
       <fieldset>
-        <label>Email</label>
-        <input matInput type="email" formControlName="email" />
+        <label for="email">Email</label>
+        <input type="email" id="email" formControlName="email" />
+        <p
+          *ngIf="!!this.applyForm?.get('email')?.errors?.['required'] && (this.applyForm.get('email')?.touched)"
+          class="text-red-500"
+        >
+          Email is required
+        </p>
+        <p
+          *ngIf="!!this.applyForm?.get('email')?.errors?.['email'] && (this.applyForm.get('email')?.touched)"
+          class="text-red-500"
+        >
+          Invalid Email
+        </p>
       </fieldset>
-      <div class="phone-grid">
-        <fieldset>
-          <select matNativeControl formControlName="country" class="w-28">
-            <option
-              *ngFor="let country of countries"
-              [value]="country.dial_code"
+      <div>
+        <label>Phone Number</label>
+
+        <div class="phone-grid">
+          <fieldset>
+            <select formControlName="country" class="w-28">
+              <option
+                *ngFor="let country of countries"
+                [value]="country.dial_code"
+              >
+                {{ country.dial_code }}
+              </option>
+            </select>
+          </fieldset>
+          <fieldset class="flex-1">
+            <input formControlName="phone_number" />
+            <p
+              *ngIf="!!this.applyForm?.get('phone_number')?.errors?.['required'] && (this.applyForm.get('phone_number')?.touched)"
+              class="text-red-500"
             >
-              {{ country.dial_code }}
-            </option>
-          </select>
-        </fieldset>
-        <fieldset class="flex-1">
-          <label>Phone Number</label>
-          <input matInput formControlName="phone_number" />
-        </fieldset>
+              Phone number is required
+            </p>
+            <p
+              *ngIf="!!this.applyForm?.get('phone_number')?.errors?.['minlength'] && (this.applyForm.get('phone_number')?.touched)"
+              class="text-red-500"
+            >
+              Invalid phone number
+            </p>
+          </fieldset>
+        </div>
       </div>
       <fieldset>
-        <label>Password</label>
-        <input matInput type="password" formControlName="password" />
+        <label for="password">Password</label>
+        <input
+          type="password"
+          formControlName="password"
+          id="password"
+          name="password"
+        />
+        <p
+          *ngIf="!!this.applyForm?.get('password')?.errors?.['required'] && (this.applyForm.get('password')?.touched)"
+          class="text-red-500"
+        >
+          Password is required
+        </p>
       </fieldset>
       <fieldset>
-        <label>Confirm Password</label>
-        <input matInput type="password" formControlName="re_password" />
+        <label for="re_password">Confirm Password</label>
+        <input type="password" formControlName="re_password" id="re_password" />
         <p
           *ngIf="!!this.applyForm?.errors?.['passwordMismatch'] && (this.applyForm.get('re_password')?.touched)"
           class="text-red-500"
@@ -48,15 +86,11 @@
         </p>
       </fieldset>
       <div class="col-span-2 flex justify-center items-center">
-        <button
-          mat-raised-button
-          color="primary"
-          class="py-2 w-4/5 max-w-64"
-          type="submit"
-        >
+        <button color="primary" class="py-2 w-4/5 max-w-64" type="submit">
           Create
         </button>
       </div>
     </form>
-  </div>
+  </section>
+  <section class="flex-1 bg-black"></section>
 </main>

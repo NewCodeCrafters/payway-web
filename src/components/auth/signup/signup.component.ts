@@ -11,6 +11,8 @@ import {
 } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
 import { SignupUser } from './signup.types';
+import { Auth } from '../../../service/payway.service';
+import { config } from 'process';
 
 @Component({
   standalone: true,
@@ -19,6 +21,7 @@ import { SignupUser } from './signup.types';
   imports: [FormsModule, ReactiveFormsModule, NgFor, NgIf],
 })
 export class SignUp implements OnInit {
+  constructor(private auth: Auth) {}
   countries = countries as { name: string; code: string; dial_code: string }[];
   ngOnInit(): void {
     this.countries = countries;
@@ -71,5 +74,14 @@ export class SignUp implements OnInit {
       console.log(this.applyForm.get('re_password'), this.applyForm.errors);
       console.log(this.applyForm.errors);
     }
+    // const listener = this.auth.create_user({
+    //   email: this.applyForm.value.email!,
+    //   password: this.applyForm.value.password!,
+    //   re_password: this.applyForm.value.re_password!,
+    //   phone_number: `${this.applyForm.value.country}${this.applyForm.value.phone_number}`,
+    // });
+    // listener.subscribe((config) => {
+
+    // })
   }
 }
