@@ -1,4 +1,9 @@
-<style></style>
+<style>
+  .phone-grid {
+    display: grid;
+    grid-template-columns: 30% 1fr;
+  }
+</style>
 
 <main class="min-h-screen grid place-items-center bg-slate-900">
   <div class="max-w-5xl w-9/12">
@@ -11,11 +16,24 @@
       <mat-form-field>
         <mat-label>Email</mat-label>
         <input matInput type="email" formControlName="email" />
+        <mat-error />
       </mat-form-field>
-      <mat-form-field>
-        <mat-label>Phone Number</mat-label>
-        <input matInput formControlName="phone_number" />
-      </mat-form-field>
+      <div class="phone-grid">
+        <mat-form-field>
+          <select matNativeControl formControlName="country" class="w-28">
+            <option
+              *ngFor="let country of countries"
+              [value]="country.dial_code"
+            >
+              {{ country.dial_code }}
+            </option>
+          </select>
+        </mat-form-field>
+        <mat-form-field class="flex-1">
+          <mat-label>Phone Number</mat-label>
+          <input matInput formControlName="phone_number" />
+        </mat-form-field>
+      </div>
       <mat-form-field>
         <mat-label>Password</mat-label>
         <input matInput type="password" formControlName="password" />
@@ -23,6 +41,10 @@
       <mat-form-field>
         <mat-label>Confirm Password</mat-label>
         <input matInput type="password" formControlName="re_password" />
+        <mat-error
+          *ngIf="(applyForm.get('re_password')?.errors)!['passwordMismatch']"
+          >Password must match</mat-error
+        >
       </mat-form-field>
       <div class="col-span-2 flex justify-center items-center">
         <button
