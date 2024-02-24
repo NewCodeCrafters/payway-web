@@ -70,10 +70,13 @@ export class SignUp implements OnInit {
       );
       return;
     }
-    if (this.applyForm.value.re_password !== this.applyForm.value.password) {
-      console.log(this.applyForm.get('re_password'), this.applyForm.errors);
-      console.log(this.applyForm.errors);
-    }
+
+    console.log({
+      email: this.applyForm.value.email!,
+      password: this.applyForm.value.password!,
+      re_password: this.applyForm.value.re_password!,
+      phone_number: `${this.applyForm.value.country}${this.applyForm.value.phone_number}`,
+    });
     // const listener = this.auth.create_user({
     //   email: this.applyForm.value.email!,
     //   password: this.applyForm.value.password!,
