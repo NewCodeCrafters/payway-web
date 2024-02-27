@@ -12,6 +12,7 @@ import {
   Validators,
   ValidationErrors,
 } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   standalone: true,
@@ -28,6 +29,9 @@ import {
   ],
 })
 export class SignUp {
+  constructor(private http:HttpClient){
+
+  }
   applyForm = new FormGroup<{
     phone_number: FormControl<number | null>;
     re_password: FormControl<string | null>;
@@ -54,6 +58,11 @@ export class SignUp {
       this.applyForm.setErrors((errors: ValidationErrors) => {
         console.log(errors);
       });
+    }
+    try {
+      const res = await this.http.post(`http://localhost:8000`,JSON.stringify(this.applyForm.value))
+    } catch (error) {
+      
     }
   }
 }
