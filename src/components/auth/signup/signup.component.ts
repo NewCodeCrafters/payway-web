@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NO_ERRORS_SCHEMA, OnInit } from '@angular/core';
 import countries from '../../../assets/CountryCodes.json';
 import {
   FormsModule,
@@ -9,16 +9,16 @@ import {
   ValidationErrors,
   AbstractControl,
 } from '@angular/forms';
-import { NgFor, NgIf } from '@angular/common';
+import { NgFor, NgForOf, NgIf } from '@angular/common';
 import { SignupUser } from './signup.types';
 import { Auth } from '../../../service/payway.service';
-import { config } from 'process';
+import { DynamicInput, InputEL } from '../../ui/input.component';
 
 @Component({
   standalone: true,
   selector: 'sign-up',
   templateUrl: './signup.component.html',
-  imports: [FormsModule, ReactiveFormsModule, NgFor, NgIf],
+  imports: [FormsModule, ReactiveFormsModule, NgFor, NgIf, InputEL],
 })
 export class SignUp implements OnInit {
   constructor(private auth: Auth) {}
@@ -50,6 +50,14 @@ export class SignUp implements OnInit {
       validators: this.validatePassowrd,
     }
   );
+  email: DynamicInput = {
+    type: 'email',
+    id: 'email',
+    formControlName: 'email',
+    placeholder: '',
+    name: '',
+    formGroup: this.applyForm,
+  };
   validatePassowrd(
     control: AbstractControl<SignupUser>
   ): ValidationErrors | null {

@@ -1,0 +1,21 @@
+<div [formGroup]="config['formGroup']">
+  <input
+    [placeholder]="config.placeholder"
+    [name]="config.name"
+    [type]="config.type || 'text'"
+    [formControlName]="config['formControlName'] || ''"
+    [id]="config['id']"
+    [class]="mainClass"
+  />
+</div>
+
+<!-- *ngForOf="let attr of config; let i = index"
+  [attr.name]="
+    attr.key !== 'type' &&
+    attr.key !== 'name' &&
+    attr.key !== 'placeholder' &&
+    attr.key !== 'ngForOfOf'
+      ? attr.key
+      : null
+  "
+  [attr.value]="attr.value" -->

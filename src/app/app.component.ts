@@ -4,7 +4,7 @@ import { SignUp } from '../components/auth/signup/signup.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, SignUp],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
