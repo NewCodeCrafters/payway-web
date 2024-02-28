@@ -16,6 +16,46 @@
       (submit)="handleSubmit()"
       autocomplete="off"
     >
+    <fieldset class="flex flex-col gap-3">
+      <label for="first_name" class="text-base font-normal">First Name</label>
+      <!-- <input
+        type="email"
+        id="email"
+        formControlName="email"
+        class="bg-transparent border-white border rounded-md p-2 max-w-sm"
+        autocomplete="off"
+      /> -->
+      <custom-input [config]="first_name" />
+      <p
+        *ngIf="!!this.applyForm?.get('first_name')?.errors?.['required'] && (this.applyForm.get('first_nmae')?.touched)"
+        class="text-red-500"
+      >
+        First name is required
+      </p>
+    </fieldset>
+    <fieldset class="flex flex-col gap-3">
+      <label for="last_name" class="text-base font-normal">Last Name</label>
+      <!-- <input
+        type="email"
+        id="email"
+        formControlName="email"
+        class="bg-transparent border-white border rounded-md p-2 max-w-sm"
+        autocomplete="off"
+      /> -->
+      <custom-input [config]="last_name" />
+      <p
+        *ngIf="!!this.applyForm?.get('last_name')?.errors?.['required'] && (this.applyForm.get('last_name')?.touched)"
+        class="text-red-500"
+      >
+        Last name is required
+      </p>
+      <p
+        *ngIf="!!this.applyForm?.get('email')?.errors?.['email'] && (this.applyForm.get('email')?.touched)"
+        class="text-red-500"
+      >
+        Invalid Email
+      </p>
+    </fieldset>
       <fieldset class="flex flex-col gap-3">
         <label for="email" class="text-base font-normal">Email</label>
         <!-- <input

@@ -45,6 +45,8 @@ export class SignUp implements OnInit {
         validators: [Validators.required],
       }),
       country: new FormControl('', Validators.required),
+      last_name: new FormControl('', Validators.required),
+      first_name: new FormControl('', Validators.required)
     },
     {
       validators: this.validatePassowrd,
@@ -54,6 +56,22 @@ export class SignUp implements OnInit {
     type: 'email',
     id: 'email',
     formControlName: 'email',
+    placeholder: '',
+    name: '',
+    formGroup: this.applyForm,
+  };
+  first_name: DynamicInput = {
+    type: 'text',
+    id: 'first_name',
+    formControlName: 'first_name',
+    placeholder: '',
+    name: '',
+    formGroup: this.applyForm,
+  };
+  last_name: DynamicInput = {
+    type: 'text',
+    id: 'last_name',
+    formControlName: 'last_name',
     placeholder: '',
     name: '',
     formGroup: this.applyForm,
@@ -85,14 +103,16 @@ export class SignUp implements OnInit {
       re_password: this.applyForm.value.re_password!,
       phone_number: `${this.applyForm.value.country}${this.applyForm.value.phone_number}`,
     });
-    // const listener = this.auth.create_user({
-    //   email: this.applyForm.value.email!,
-    //   password: this.applyForm.value.password!,
-    //   re_password: this.applyForm.value.re_password!,
-    //   phone_number: `${this.applyForm.value.country}${this.applyForm.value.phone_number}`,
-    // });
-    // listener.subscribe((config) => {
-
-    // })
+    const listener = this.auth.create_user({
+      email: this.applyForm.value.email!,
+      password: this.applyForm.value.password!,
+      re_password: this.applyForm.value.re_password!,
+      phone_number: `${this.applyForm.value.country}${this.applyForm.value.phone_number}`,
+      first_name:this.applyForm.value.first_name!,
+      last_name: this.applyForm.value.last_name!
+    });
+    listener.subscribe((config) => {
+     console.log(config)
+    })
   }
 }

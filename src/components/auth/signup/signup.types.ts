@@ -6,6 +6,8 @@ type SignupUser = {
   email: FormControl<string | null>;
   password: FormControl<string | null>;
   country: FormControl<string | null>;
+  first_name: FormControl<string | null>;
+  last_name: FormControl<string | null>;
 };
 
 export type { SignupUser };
