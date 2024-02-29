@@ -4,5 +4,8 @@ type CreateUser = {
   password: string;
   re_password: string;
 };
-
-export type { CreateUser };
+type ActivateUser = {
+  token: string;
+  uid: string;
+};
+export type { CreateUser, ActivateUser };
