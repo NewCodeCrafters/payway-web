@@ -3,6 +3,8 @@ type CreateUser = {
   phone_number: string;
   password: string;
   re_password: string;
+  last_name: string;
+  first_name:string;
 };
 type ActivateUser = {
   token: string;
