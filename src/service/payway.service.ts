@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { CreateUser } from './types';
+import { ActivateUser, CreateUser } from './types';
 
 class Payway {
   public url = `http://localhost:8000`;
@@ -13,11 +13,26 @@ export class Auth extends Payway {
     super();
   }
   create_user(user_details: CreateUser) {
-    const res = this.httpClient.post(`${this.url}/${this.path}/users/`, user_details, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    const res = this.httpClient.post(
+      `${this.url}/${this.path}/users/`,
+      user_details,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
     return res;
+  }
+  activate_user(userToken: ActivateUser) {
+    const res = this.httpClient.post(
+      `${this.url}/${this.path}/`,
+      JSON.stringify(userToken),
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
   }
 }
