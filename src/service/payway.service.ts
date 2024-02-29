@@ -25,8 +25,8 @@ export class Auth extends Payway {
     return res;
   }
   activate_user(userToken: ActivateUser) {
-    const res = this.httpClient.post(
-      `${this.url}/${this.path}/`,
+    return this.httpClient.post(
+      `${this.url}/${this.path}/users/activation/`,
       JSON.stringify(userToken),
       {
         headers: {
