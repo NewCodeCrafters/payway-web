@@ -15,7 +15,7 @@ export class ActivateUser implements OnInit {
       this.route.navigate(['404'], { skipLocationChange: true });
       return;
     }
-    const [token, uid] = path.slice(2);
+    const [uid, token] = path.slice(2);
     const send_activation = this.auth.activate_user({ token, uid });
     send_activation.subscribe((config) => {
       // this.route.navigate(['login']);
