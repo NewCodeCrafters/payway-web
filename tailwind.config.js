@@ -41,6 +41,9 @@ module.exports = {
           900: "#fee4d2",
         },
       },
+      fontFamily: {
+        openSans: ["Open Sans", "sans-serif"],
+      },
     },
   },
   plugins: [],

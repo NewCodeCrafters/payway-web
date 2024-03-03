@@ -1,4 +1,4 @@
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { twMerge } from 'tailwind-merge';
@@ -12,7 +12,7 @@ export interface DynamicInput {
   selector: 'custom-input',
   standalone: true,
   templateUrl: './input.component.html',
-  imports: [NgFor, FormsModule, ReactiveFormsModule],
+  imports: [NgFor, FormsModule, ReactiveFormsModule, NgIf],
 })
 export class InputEL {
   @Input() className: string = '';

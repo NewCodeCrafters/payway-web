@@ -1,13 +1,21 @@
-<div [formGroup]="config['formGroup']">
-  <input
-    [placeholder]="config.placeholder"
-    [name]="config.name"
-    [type]="config.type || 'text'"
-    [formControlName]="config['formControlName'] || ''"
-    [id]="config['id']"
-    [class]="mainClass"
-  />
-</div>
+<ng-container class="flex flex-col gap-2">
+  <label
+    *ngIf="config['title']"
+    [for]="config['id']"
+    class="font-medium tracking-wide text-sm text-gray-300"
+    >{{ config["title"] }}</label
+  >
+  <div [formGroup]="config['formGroup']">
+    <input
+      [placeholder]="config.placeholder"
+      [name]="config.name"
+      [type]="config.type || 'text'"
+      [formControlName]="config['formControlName'] || ''"
+      [id]="config['id']"
+      [class]="mainClass"
+    />
+  </div>
+</ng-container>
 
 <!-- *ngForOf="let attr of config; let i = index"
   [attr.name]="

@@ -46,7 +46,7 @@ export class SignUp implements OnInit {
       }),
       country: new FormControl('', Validators.required),
       last_name: new FormControl('', Validators.required),
-      first_name: new FormControl('', Validators.required)
+      first_name: new FormControl('', Validators.required),
     },
     {
       validators: this.validatePassowrd,
@@ -59,6 +59,7 @@ export class SignUp implements OnInit {
     placeholder: '',
     name: '',
     formGroup: this.applyForm,
+    title: 'Email',
   };
   first_name: DynamicInput = {
     type: 'text',
@@ -67,6 +68,7 @@ export class SignUp implements OnInit {
     placeholder: '',
     name: '',
     formGroup: this.applyForm,
+    title: 'First Name',
   };
   last_name: DynamicInput = {
     type: 'text',
@@ -75,6 +77,7 @@ export class SignUp implements OnInit {
     placeholder: '',
     name: '',
     formGroup: this.applyForm,
+    title: 'Last Name',
   };
   validatePassowrd(
     control: AbstractControl<SignupUser>
@@ -108,11 +111,11 @@ export class SignUp implements OnInit {
       password: this.applyForm.value.password!,
       re_password: this.applyForm.value.re_password!,
       phone_number: `${this.applyForm.value.country}${this.applyForm.value.phone_number}`,
-      first_name:this.applyForm.value.first_name!,
-      last_name: this.applyForm.value.last_name!
+      first_name: this.applyForm.value.first_name!,
+      last_name: this.applyForm.value.last_name!,
     });
     listener.subscribe((config) => {
-     console.log(config)
-    })
+      console.log(config);
+    });
   }
 }
