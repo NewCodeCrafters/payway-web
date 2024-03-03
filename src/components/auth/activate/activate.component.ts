@@ -18,7 +18,7 @@ export class ActivateUser implements OnInit {
     const [uid, token] = path.slice(2);
     const send_activation = this.auth.activate_user({ token, uid });
     send_activation.subscribe((config) => {
-      // this.route.navigate(['login']);
+      this.route.navigate(['login']);
       console.log(config);
     });
   }

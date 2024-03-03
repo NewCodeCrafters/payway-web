@@ -5,58 +5,59 @@
   }
 </style>
 
-<main class="min-h-screen flex bg-slate-900">
-  <section class="max-w-5xl w-9/12 flex-1 px-10 py-8">
-    <h1 class="text-white text-bold text-lg md:text-xl capitalize mb-5">
-      Create account
-    </h1>
+<main class="min-h-screen flex text-gray">
+  <section
+    class="basis-2/4 bg-gradient-to-bl from-primary-400 to-primary-700"
+  ></section>
+  <section class="max-w-5xl flex-1 w-9/12 px-10 py-8">
+    <h1 class="text-bold text-lg md:text-xl capitalize mb-5">Create account</h1>
     <form
       [formGroup]="applyForm"
-      class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 text-white"
+      class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 text-gray"
       (submit)="handleSubmit()"
       autocomplete="off"
     >
-    <fieldset class="flex flex-col gap-3">
-      <label for="first_name" class="text-base font-normal">First Name</label>
-      <!-- <input
-        type="email"
-        id="email"
-        formControlName="email"
-        class="bg-transparent border-white border rounded-md p-2 max-w-sm"
-        autocomplete="off"
-      /> -->
-      <custom-input [config]="first_name" />
-      <p
-        *ngIf="!!this.applyForm?.get('first_name')?.errors?.['required'] && (this.applyForm.get('first_nmae')?.touched)"
-        class="text-red-500"
-      >
-        First name is required
-      </p>
-    </fieldset>
-    <fieldset class="flex flex-col gap-3">
-      <label for="last_name" class="text-base font-normal">Last Name</label>
-      <!-- <input
-        type="email"
-        id="email"
-        formControlName="email"
-        class="bg-transparent border-white border rounded-md p-2 max-w-sm"
-        autocomplete="off"
-      /> -->
-      <custom-input [config]="last_name" />
-      <p
-        *ngIf="!!this.applyForm?.get('last_name')?.errors?.['required'] && (this.applyForm.get('last_name')?.touched)"
-        class="text-red-500"
-      >
-        Last name is required
-      </p>
-      <p
-        *ngIf="!!this.applyForm?.get('email')?.errors?.['email'] && (this.applyForm.get('email')?.touched)"
-        class="text-red-500"
-      >
-        Invalid Email
-      </p>
-    </fieldset>
       <fieldset class="flex flex-col gap-3">
+        <label for="first_name" class="text-base font-normal">First Name</label>
+        <!-- <input
+        type="email"
+        id="email"
+        formControlName="email"
+        class="bg-transparent border-white border rounded-md p-2 max-w-sm"
+        autocomplete="off"
+      /> -->
+        <custom-input [config]="first_name" />
+        <p
+          *ngIf="!!this.applyForm?.get('first_name')?.errors?.['required'] && (this.applyForm.get('first_nmae')?.touched)"
+          class="text-red-500"
+        >
+          First name is required
+        </p>
+      </fieldset>
+      <fieldset class="flex flex-col gap-3">
+        <label for="last_name" class="text-base font-normal">Last Name</label>
+        <!-- <input
+        type="email"
+        id="email"
+        formControlName="email"
+        class="bg-transparent border-white border rounded-md p-2 max-w-sm"
+        autocomplete="off"
+      /> -->
+        <custom-input [config]="last_name" />
+        <p
+          *ngIf="!!this.applyForm?.get('last_name')?.errors?.['required'] && (this.applyForm.get('last_name')?.touched)"
+          class="text-red-500"
+        >
+          Last name is required
+        </p>
+        <p
+          *ngIf="!!this.applyForm?.get('email')?.errors?.['email'] && (this.applyForm.get('email')?.touched)"
+          class="text-red-500"
+        >
+          Invalid Email
+        </p>
+      </fieldset>
+      <fieldset class="flex flex-col gap-3 col-span-2">
         <label for="email" class="text-base font-normal">Email</label>
         <!-- <input
           type="email"
@@ -85,12 +86,12 @@
         <div class="flex flex-col gap-4">
           <select
             formControlName="country"
-            class="max-w-sm bg-transparent text-white p-2 border border-white rounded-md"
+            class="max-w-lg w-full bg-transparent p-2 border rounded-md"
           >
             <option
               *ngFor="let country of countries"
               [value]="country.dial_code"
-              class="text-white bg-slate-900"
+              class=""
             >
               {{ country.name }} {{ country.dial_code }}
             </option>
@@ -98,7 +99,7 @@
 
           <input
             formControlName="phone_number"
-            class="max-w-sm bg-transparent text-white p-2 border border-white rounded-md"
+            class="max-w-lg bg-transparent p-2 border rounded-md"
           />
           <p
             *ngIf="!!this.applyForm?.get('phone_number')?.errors?.['required'] && (this.applyForm.get('phone_number')?.touched)"
@@ -121,7 +122,7 @@
           formControlName="password"
           id="password"
           name="password"
-          class="max-w-sm bg-transparent text-white p-2 border border-white rounded-md"
+          class="max-w-lg bg-transparent p-2 border rounded-md"
         />
         <p
           *ngIf="!!this.applyForm?.get('password')?.errors?.['required'] && (this.applyForm.get('password')?.touched)"
@@ -136,7 +137,7 @@
           type="password"
           formControlName="re_password"
           id="re_password"
-          class="max-w-sm bg-transparent text-white p-2 border border-white rounded-md"
+          class="max-w-lg bg-transparent p-2 border rounded-md"
         />
         <p
           *ngIf="!!this.applyForm?.errors?.['passwordMismatch'] && (this.applyForm.get('re_password')?.touched)"
@@ -156,5 +157,4 @@
       </div>
     </form>
   </section>
-  <section class="bg-black basis-2/5 hidden md:block"></section>
 </main>
