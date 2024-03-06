@@ -1,4 +1,4 @@
-<ng-container class="flex flex-col gap-2">
+<div class="flex flex-col gap-2">
   <label
     *ngIf="config['title']"
     [for]="config['id']"
@@ -15,7 +15,7 @@
       [class]="mainClass"
     />
   </div>
-</ng-container>
+</div>
 
 <!-- *ngForOf="let attr of config; let i = index"
   [attr.name]="

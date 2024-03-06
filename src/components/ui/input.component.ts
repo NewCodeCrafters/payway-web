@@ -19,7 +19,7 @@ export class InputEL {
   @Input() config!: DynamicInput;
 
   mainClass = twMerge(
-    'border  shadow-sm h-9 w-full  text-white transition-all px-3 py-1 rounded-md bg-transparent',
+    'border  shadow-sm h-9 w-full  transition-all px-3 py-1 rounded-md bg-transparent',
     this.className
   );
 }

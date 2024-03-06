@@ -79,6 +79,32 @@ export class SignUp implements OnInit {
     formGroup: this.applyForm,
     title: 'Last Name',
   };
+  phone_number: DynamicInput = {
+    type: 'text',
+    id: 'phone_number',
+    formControlName: 'phone_number',
+    placeholder: '',
+    name: '',
+    formGroup: this.applyForm,
+  };
+  password: DynamicInput = {
+    type: 'text',
+    id: 'password',
+    formControlName: 'password',
+    placeholder: '',
+    name: '',
+    formGroup: this.applyForm,
+    title: 'Password',
+  };
+  re_password: DynamicInput = {
+    type: 'text',
+    id: 're_password',
+    formControlName: 're_password',
+    placeholder: '',
+    name: '',
+    formGroup: this.applyForm,
+    title: 'Confirm Password',
+  };
   validatePassowrd(
     control: AbstractControl<SignupUser>
   ): ValidationErrors | null {
