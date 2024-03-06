@@ -3,8 +3,14 @@ import { SignUp } from '../components/auth/signup/signup.component';
 import { Login } from '../components/auth/login/login.component';
 import { ActivateUser } from '../components/auth/activate/activate.component';
 import { NotFound } from '../components/not-found/not-found.component';
+import { HomePage } from '../components/app/home/home.component';
 
 export const routes: Routes = [
+  {
+    path: '',
+    component: HomePage,
+    title: 'Payway',
+  },
   {
     path: 'register',
     component: SignUp,
