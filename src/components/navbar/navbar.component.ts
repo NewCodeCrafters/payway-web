@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterLinkActive, RouterModule } from '@angular/router';
 import { PAGE_ROUTES } from '../../app/app.routes';
 
 @Component({
   selector: 'nav-bar',
   standalone: true,
   templateUrl: './navbar.component.html',
-  imports: [RouterModule],
+  imports: [RouterModule, RouterLinkActive],
 })
 export class Navbar {
   constructor(public routes: PAGE_ROUTES) {}

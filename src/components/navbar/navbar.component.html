@@ -1,4 +1,4 @@
-<div class="min-h-screen w-screen bg-gray-700">
+<div class="min-h-screen w-screen bg-gray-700 px-3 py-10">
   <header class="w-screen h-24 fixed bottom-0 right-0 left-0">
     <nav>
       <ul
@@ -7,7 +7,8 @@
         <li>
           <a
             [routerLink]="'/' + routes.app.home"
-            class="flex gap-3 items-center font-medium bg-gradient-to-br"
+            class="flex gap-3 items-center font-medium bg-gradient-to-br nav-link"
+            [routerLinkActive]="'active'"
           >
             <svg
               xmlns="http://www.w31.org/2000/svg"
@@ -30,7 +31,8 @@
         <li>
           <a
             [routerLink]="'/' + routes.app.wallet"
-            class="flex gap-3 items-center font-medium bg-gradient-to-br"
+            class="flex gap-3 items-center font-medium bg-gradient-to-br nav-link"
+            routerLinkActive="active"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -55,7 +57,8 @@
         <li>
           <a
             [routerLink]="'/' + routes.app.transfer"
-            class="flex gap-3 items-center font-medium bg-gradient-to-br"
+            class="flex gap-3 items-center font-medium bg-gradient-to-br nav-link"
+            [routerLinkActive]="'active'"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +83,8 @@
         <li>
           <a
             [routerLink]="'/' + routes.app.profile"
-            class="flex gap-3 items-center font-medium bg-gradient-to-br"
+            class="flex gap-3 items-center font-medium bg-gradient-to-br nav-link"
+            [routerLinkActive]="'active'"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -103,5 +107,7 @@
       </ul>
     </nav>
   </header>
-  <ng-content />
+  <main class="container mx-auto">
+    <ng-content />
+  </main>
 </div>

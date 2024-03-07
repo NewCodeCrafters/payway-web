@@ -2,11 +2,11 @@
 @tailwind utilities;
 @tailwind base;
 @tailwind components;
-html,
-body {
-  height: 100%;
-}
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+@layer components {
+  .nav-link span {
+    display: none;
+  }
+  .nav-link.active span {
+    display: block;
+  }
 }

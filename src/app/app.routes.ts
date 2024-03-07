@@ -12,7 +12,7 @@ import { TransferPage } from '../components/app/transfer/transfer.component';
 export const ROUTES = {
   app: {
     wallet: 'wallet',
-    home: '',
+    home: 'home',
     profile: 'profile',
     transfer: 'transfer',
   },
@@ -23,6 +23,11 @@ export const ROUTES = {
   },
 };
 export const routes: Routes = [
+  {
+    path: '',
+    redirectTo: `/${ROUTES.app.home}`,
+    pathMatch: 'full',
+  },
   {
     path: ROUTES.app.home,
     component: HomePage,
