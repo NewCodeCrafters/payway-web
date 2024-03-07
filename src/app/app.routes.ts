@@ -4,25 +4,57 @@ import { Login } from '../components/auth/login/login.component';
 import { ActivateUser } from '../components/auth/activate/activate.component';
 import { NotFound } from '../components/not-found/not-found.component';
 import { HomePage } from '../components/app/home/home.component';
+import { WalletPage } from '../components/app/wallet/wallet.component';
+import { Injectable } from '@angular/core';
+import { ProfilePage } from '../components/app/profile/profile.component';
+import { TransferPage } from '../components/app/transfer/transfer.component';
 
+export const ROUTES = {
+  app: {
+    wallet: 'wallet',
+    home: '',
+    profile: 'profile',
+    transfer: 'transfer',
+  },
+  auth: {
+    register: 'register',
+    login: 'login',
+    activate: 'activate',
+  },
+};
 export const routes: Routes = [
   {
-    path: '',
+    path: ROUTES.app.home,
     component: HomePage,
     title: 'Payway',
   },
   {
-    path: 'register',
+    path: ROUTES.app.wallet,
+    component: WalletPage,
+    title: 'Wallet',
+  },
+  {
+    path: ROUTES.auth.register,
     component: SignUp,
     title: 'Register',
   },
   {
-    path: 'login',
+    path: ROUTES.app.profile,
+    component: ProfilePage,
+    title: 'Profile',
+  },
+  {
+    path: ROUTES.app.transfer,
+    component: TransferPage,
+    title: 'Transfer',
+  },
+  {
+    path: ROUTES.auth.login,
     component: Login,
     title: 'Login',
   },
   {
-    path: 'activate',
+    path: ROUTES.auth.activate,
 
     title: 'Activate',
     children: [
@@ -38,3 +70,10 @@ export const routes: Routes = [
     title: '404',
   },
 ];
+@Injectable({
+  providedIn: 'root',
+})
+export class PAGE_ROUTES {
+  public app = { ...ROUTES.app };
+  public auth = { ...ROUTES.auth };
+}

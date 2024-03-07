@@ -3,8 +3,8 @@ import { Navbar } from '../../navbar/navbar.component';
 
 @Component({
   standalone: true,
-  selector: 'home',
-  templateUrl: './home.component.html',
+  selector: 'profile',
+  templateUrl: './profile.component.html',
   imports: [Navbar],
 })
-export class HomePage {}
+export class ProfilePage {}
