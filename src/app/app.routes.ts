@@ -8,6 +8,7 @@ import { WalletPage } from '../components/app/wallet/wallet.component';
 import { Injectable } from '@angular/core';
 import { ProfilePage } from '../components/app/profile/profile.component';
 import { TransferPage } from '../components/app/transfer/transfer.component';
+import { DepositPage } from '../components/app/deposit/deposit.component';
 
 export const ROUTES = {
   app: {
@@ -15,6 +16,7 @@ export const ROUTES = {
     home: 'home',
     profile: 'profile',
     transfer: 'transfer',
+    deposit: 'deposit',
   },
   auth: {
     register: 'register',
@@ -27,6 +29,11 @@ export const routes: Routes = [
     path: '',
     redirectTo: `/${ROUTES.app.home}`,
     pathMatch: 'full',
+  },
+  {
+    path: ROUTES.app.deposit,
+    component: DepositPage,
+    title: 'Deposit to Account',
   },
   {
     path: ROUTES.app.home,

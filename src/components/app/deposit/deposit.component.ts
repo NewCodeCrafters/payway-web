@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { Navbar } from '../../navbar/navbar.component';
+
 @Component({
+  selector: 'deposit',
   standalone: true,
-  selector: 'transfer',
-  templateUrl: './transfer.component.html',
+  templateUrl: './deposit.component.html',
   imports: [Navbar],
 })
-export class TransferPage {}
+export class DepositPage {}
